@@ -1,60 +1,66 @@
-# PS3 RGB-SCART DVD / Blu-ray Green Screen Fix
+# PS3 RGB-SCART DVD & Blu-ray Green Screen Fix
 
-**v0.2.0 — Samsara support.** A VSH plugin that corrects known AVMULTI color
-requests from the original PS3 disc player on **Evilnat 4.93 CEX / Cobra 8.5**.
-For RGB-SCART displays with normal XMB/game colors but a green DVD/Blu-ray picture.
+**Watch DVDs and Blu-rays with correct colors through the PS3's analog RGB-SCART output.**
+This plugin corrects the known color-mode switches that make the picture turn green
+when using Sony's original disc player with an RGB-SCART display.
 
-## Download
+Designed and tested for **Evilnat 4.93 CEX + Cobra 8.5** on a PS3 Slim using
+**AV Multi Out with an RGB-SCART cable**. Multiple films have been tested across
+DVD and Blu-ray during development, including playback mode changes and HDD autoload.
+This is not a guarantee for every disc or firmware; see [test details](docs/TESTING.md).
 
-Use `dist/disc_rgb_three.sprx` in the source package or the standalone SPRX
-in [Releases](https://github.com/74zw7bz777-bit/ps3-rgb-scart-disc-fix/releases). Read [installation and recovery](docs/INSTALL.md)
-before enabling autoload. This modifies live VSH instructions and can freeze an
-incompatible system; it is not a read-only tool. No flash modification is needed.
+## Is this the problem you have?
 
-**Tested binary:** 4537 bytes. SHA-256:
-`153fd84dacea486b078a74f584190c67b563e60b591cccf1ab758c73ecc2992e`
+- The XMB and games have normal colors over RGB-SCART.
+- Starting a DVD or Blu-ray makes the picture green or gives it a strong green tint.
+- Audio and playback otherwise work normally.
 
-## Compatibility and evidence
+The original player can select a YUV output mode that is unsuitable for the RGB-SCART
+connection. This fix corrects recognized AV mode requests to RGB, including known
+mode changes after playback starts. It runs with the original Sony player; no
+replacement media player or flash patch is required.
 
-- Target: PS3 Slim, Evilnat **4.93 CEX**, **Cobra 8.5**, RGB-SCART / AV Multi Out.
-- New v0.2.0: Samsara Blu-ray visual test passed, followed by HDD autoload,
-  restart verification and another successful playback report.
-- Prior build: Zodiac DVD and Perfect Days Blu-ray, repeated playback, more than
-  eleven minutes of Blu-ray followed by DVD without restarting, normal XMB return.
-  MGS2 gameplay was also visually reported normal on the prior build.
-- Those older tests are not a fresh regression run of every title on v0.2.0.
-  No claim of all-disc, all-game, full-film endurance or other-firmware support.
-- HDMI/component and other cable configurations are outside the tested scope.
-  Disable before changing firmware or output configuration.
+## Download and install
 
-The exact-match filter recognizes **three complete 116-byte AV requests**:
-known 576-line and 480-line applications, plus the Samsara 480-line variant.
-Unrecognized requests pass through unchanged and may still produce green output.
-It is not a disc/application detector; a matching game request can also match.
+**[Download the plugin](https://github.com/74zw7bz777-bit/ps3-rgb-scart-disc-fix/releases/tag/v0.2.0)**
+then follow **[installation, upgrading and deactivation](docs/INSTALL.md)**.
+Cobra can load it automatically at boot from the internal HDD. When upgrading,
+replace the previous RGB plugin entry; never load two RGB-fix instances together.
 
-## How it works
+The tested `disc_rgb_three.sprx` is 4537 bytes. SHA-256:
+```text
+153fd84dacea486b078a74f584190c67b563e60b591cccf1ab758c73ecc2992e
+```
 
-Five guarded temporary VSH hooks observe the AV transaction path. For an exact
-matching request targeting AVMULTI port `0x10`, two 32-bit fields are changed:
+## Compatibility and limits
 
-- Packet offset `0x30`: VIDEO_MODE output format `9 -> 0`.
-- Packet offset `0x4C`: AV_VIDEO_CS color selection `0x00010001 -> 0`.
+- Tested firmware: **Evilnat 4.93 CEX / Cobra 8.5**. Other firmware is unsupported.
+- Tested connection: **RGB-SCART through AV Multi Out**. This is not a general
+  HDMI, component/YPbPr, composite or S-Video fix.
+- The plugin recognizes specific AV requests, not film titles. It supports three
+  known request patterns; unknown patterns pass through and can still appear green.
+- A matching request from a game can also match. There is no all-game certification.
+- It modifies live VSH instructions. Firmware checks and rollback guards reduce
+  risk but do not eliminate freezes. Keep a backup and a recovery route before
+  enabling autoload. Disable before firmware updates or changing output hardware.
 
-Copy-control/signaling bytes remain unchanged. Samsara's extra template differs
-from the previous 480-line template at byte `0x72` (`0x04 -> 0x34`); the plugin
-recognizes this variant but does not rewrite that signaling byte.
-Firmware/Cobra and 25 anchors are checked before hook installation. Fault
-conditions request rollback. This is a color-output correction, not disc
-content decryption or a replacement firmware.
+## Documentation and source
 
-## Source and verification
+- [Installation and recovery](docs/INSTALL.md)
+- [Tested films and hardware evidence](docs/TESTING.md)
+- [Technical explanation and limitations](docs/TECHNICAL.md)
+- [Build and verification](docs/BUILD.md), [verification report](VERIFICATION.json)
+- [Release notes](docs/RELEASE-NOTES.md), [source provenance](PROVENANCE.md)
 
-Source, exact templates and bounded PPU instruction tests are included.
-See [build instructions](docs/BUILD.md), [technical scope](docs/TECHNICAL.md),
-[provenance](PROVENANCE.md) and [verification](VERIFICATION.json).
-No Sony firmware/SDK, keys, private runtime logs, console identifiers or RAM dumps
-are included. Only required short compatibility fingerprints/protocol templates
-are present. Toolchain setup and scetool data are supplied separately.
+Source, exact templates and bounded PPU tests are included. No Sony firmware/SDK,
+signing keys, private console logs or personal identifiers are distributed.
+This is an independent project, not an official Sony, Evilnat or Cobra release.
 
-Search terms: PS3 DVD green screen RGB SCART fix, Blu-ray green picture,
-AV Multi Out, Evilnat 4.93 CEX, Cobra 8.5, Samsara, Perfect Days, Zodiac.
+## Deutsch
+
+**PS3-DVDs und Blu-rays über RGB-SCART ohne Grünstich ansehen:** Der Fix korrigiert
+bekannte Farbraum-Umschaltungen des originalen Players am analogen AV Multi Out.
+Gedacht für Evilnat 4.93 CEX mit Cobra 8.5. Wenn XMB und Spiele normale Farben haben,
+DVDs oder Blu-rays aber grün werden, ist dies das hier behandelte Problem.
+Mehrere Filme auf DVD und Blu-ray wurden getestet; unbekannte Disc-Modusvarianten
+und andere Firmwareversionen sind damit nicht automatisch abgedeckt.

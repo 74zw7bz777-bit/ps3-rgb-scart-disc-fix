@@ -39,3 +39,10 @@ Offline tests model a subset of PPU instructions. They do not prove scheduler,
 cache, MMU, native loader or arbitrary concurrency behavior. Native visual checks
 are separate evidence. The candidate includes synthetic tests, not private raw
 captures, RAM dumps, conversation logs, console identifiers or Sony modules.
+
+## Additional 480-line request variant
+
+The third template was observed during a Samsara Blu-ray startup transition.
+Compared with the earlier 480-line template, only byte 0x72 differs (0x04 versus
+0x34). Both variants are matched in full; that signaling byte is left unchanged.
+This is a packet-format distinction, not a title-specific switch. See TESTING.md.

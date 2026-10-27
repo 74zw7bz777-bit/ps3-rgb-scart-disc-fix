@@ -1,12 +1,18 @@
-# v0.2.0 — Samsara RGB-SCART fix
+# PS3 RGB-SCART DVD & Blu-ray Color Fix
 
-Adds a third exact AVMULTI request template for the second Samsara Blu-ray video
-mode application. The two existing templates and two RGB packet writes remain;
-copy-control/signaling is preserved. Samsara temporary playback, HDD autoload,
-restart checks and post-restart playback were successful on the tested system.
+Corrects known AVMULTI color-mode requests so supported DVD and Blu-ray playback
+through the original Sony player retains correct colors on an RGB-SCART display.
+Supports known startup/subsequent mode changes, repeated playback and HDD autoload
+on the tested configuration. See [test details](TESTING.md) for the films and build
+history behind these observations.
+
+## Current technical revision
+
+The existing release tag remains `v0.2.0` to identify the unchanged tested binary.
+Three exact 116-byte request templates are recognized. The third covers an
+additional 480-line mode variant; the two existing RGB field edits are unchanged.
+Copy-control/signaling fields are preserved. The binary and its SHA-256 have not
+changed with this documentation update.
 
 Firmware-specific experimental release: Evilnat 4.93 CEX / Cobra 8.5, PS3 Slim,
-RGB-SCART. Prior tests include Zodiac DVD and Perfect Days Blu-ray. This does not
-claim every disc, game, firmware or output configuration is supported.
-
-Not an official Sony, Evilnat, Cobra, webMAN or PS3DK release. No affiliation.
+RGB-SCART. No universal compatibility or official affiliation is claimed.

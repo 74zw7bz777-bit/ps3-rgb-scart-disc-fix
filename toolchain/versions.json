@@ -1,0 +1,9 @@
+{
+  "PS3DK": "6bb838ddd788da1a78c6ee34f45000e3a5291edf",
+  "binutils": "2.42 plus pinned PS3DK patches/ppu/binutils-2.42/*.patch",
+  "scetool": "d78d8986c9ab831f084516f21ecdf87080ac7b78",
+  "prx-gen": "0.19.0 plus bundled patch",
+  "tested_host": "Apple Silicon macOS",
+  "reference_prx_sha256": "dd2ccbc9a0f75b24234bd8310fc7ecbc5aa5bc2ffead392a80313b689d2c0992",
+  "hardware_tested_sprx_sha256": "153fd84dacea486b078a74f584190c67b563e60b591cccf1ab758c73ecc2992e"
+}

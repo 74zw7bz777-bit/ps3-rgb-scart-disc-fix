@@ -1,0 +1,37 @@
+--- a/tools/prx-gen/src/build.rs
++++ b/tools/prx-gen/src/build.rs
+@@ -16,7 +16,7 @@
+ use std::path::Path;
+ 
+ use crate::elf::{
+-    wr_u16, wr_u64, Elf, Phdr, ELFOSABI_LV2, ET_EXEC, ET_SCE_PPURELEXEC, PHDR_SIZE, PT_LOAD,
++    wr_u16, wr_u32, wr_u64, Elf, Phdr, ELFOSABI_LV2, ET_EXEC, ET_SCE_PPURELEXEC, PHDR_SIZE, PT_LOAD,
+     PT_SCE_PPURELA,
+ };
+ use crate::module;
+@@ -173,11 +173,15 @@
+         p_paddr: 0,
+         p_filesz: blob.len() as u64,
+         p_memsz: 0,
+-        p_align: 4,
++        p_align: 16,
+     };
+ 
+     let mut phdrs: Vec<Phdr> = elf.phdrs.clone();
+     phdrs[0].p_paddr = p_paddr;
++    // Only first LOAD carries module-info; other reference LOAD p_paddr is zero.
++    for ph in phdrs.iter_mut().skip(1) {
++        if ph.p_type == PT_LOAD { ph.p_paddr = 0; }
++    }
+ 
+     // A reserved slot is the last phdr already carrying the reloc type, which
+     // is what the linker script produces for a segment with no content.
+@@ -221,6 +225,8 @@
+ 
+     // --- rewrite the ELF header --------------------------------------------
+     out[7] = ELFOSABI_LV2; // EI_OSABI
++    // Reference-backed CellOS PRX flags; not GNU ELFv1 ABI bits.
++    wr_u32(&mut out, 48, 0x01000000);
+     wr_u16(&mut out, 16, ET_SCE_PPURELEXEC); // e_type
+     wr_u64(&mut out, 24, 0); // e_entry — never read for a PRX, zero by convention
+     wr_u64(&mut out, 32, phoff as u64); // e_phoff

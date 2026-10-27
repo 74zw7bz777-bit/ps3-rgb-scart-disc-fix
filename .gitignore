@@ -1,0 +1,14 @@
+__pycache__/
+*.pyc
+src/*.o
+src/*.elf
+src/*.prx
+src/*.sprx
+src/program.S
+src/disassembly.txt
+src/link.map
+src/build.log
+src/build-manifest.json
+src/*-tests.json
+src/audit.json
+src/synthetic-*.bin

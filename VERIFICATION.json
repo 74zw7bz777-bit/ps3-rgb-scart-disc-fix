@@ -1,0 +1,1103 @@
+{
+  "binary_sha256": "153fd84dacea486b078a74f584190c67b563e60b591cccf1ab758c73ecc2992e",
+  "binary_bytes": 4537,
+  "deterministic_prx_sha256": "dd2ccbc9a0f75b24234bd8310fc7ecbc5aa5bc2ffead392a80313b689d2c0992",
+  "source_rebuild_matches_tested_prx": true,
+  "scetool_roundtrip_identical": true,
+  "runtime_source_matches_tested_build": {
+    "installer.S": true,
+    "capture.S": true,
+    "data.inc": true,
+    "crt.S": true,
+    "prx.ld": true,
+    "anchors.json": true,
+    "sites.json": true,
+    "start-576.bin": true,
+    "second-480.bin": true,
+    "samsara-480.bin": true
+  },
+  "public_regression_tests": {
+    "reuse": {
+      "passed": 736,
+      "failed": 0,
+      "private_native_traces_included": false,
+      "scope": "bounded built-instruction model; synthetic fixtures"
+    },
+    "contention": {
+      "passed": 164,
+      "failed": 0,
+      "regression": "first A/B -> irrelevant contention -> second A/B succeeds in model",
+      "critical_loss": "selected SEND/REPLY/END contention inhibits further corrections",
+      "missed_unmodified_candidate": "sticky116, no rewrite, no success claim; subsequent candidate may retry naturally",
+      "assumptions": [
+        "T/SP/TLS identifies same synchronous invocation; unchanged native calling flow",
+        "aligned u32 loads/stores atomic; release publication plus control-dependent isync acquire",
+        "packet source remains readable per existing send path; protected recheck retained"
+      ],
+      "scope": "bounded integer instruction execution; native interleavings/cache/MMU remain hardware-test requirements"
+    },
+    "session": {
+      "passed": 934,
+      "failed": 0,
+      "long_sequence": "305 corrections per seed,10 log-block reuses,3 seeds",
+      "retention": "current block only; retired responses are not retained",
+      "failure_behavior": "no recycle of failed/incomplete block; faults sticky; uint32 exhaustion requests stop",
+      "native_execution": false
+    },
+    "installer": {
+      "result": "PASS",
+      "scope": "assembled instruction replay, syscall/cache/atomic effects modeled; not hardware validation",
+      "cases": [
+        {
+          "case": "fault:12",
+          "status": "0x6",
+          "error": "0x0",
+          "target_writes": [
+            [
+              6144492,
+              1268925496
+            ],
+            [
+              6144768,
+              1268925564
+            ],
+            [
+              6144784,
+              1268925892
+            ],
+            [
+              6145028,
+              1268925992
+            ],
+            [
+              6144808,
+              1268926556
+            ],
+            [
+              6144808,
+              2145585076
+            ],
+            [
+              6145028,
+              2139415416
+            ],
+            [
+              6144784,
+              1610612736
+            ],
+            [
+              6144768,
+              2157381632
+            ],
+            [
+              6144492,
+              2088115064
+            ]
+          ],
+          "cache_ops": 20,
+          "plugin_stack_bytes_excluding_VSH": 384,
+          "steps": 4768
+        },
+        {
+          "case": "fault:88",
+          "status": "0x6",
+          "error": "0x0",
+          "target_writes": [
+            [
+              6144492,
+              1268925496
+            ],
+            [
+              6144768,
+              1268925564
+            ],
+            [
+              6144784,
+              1268925892
+            ],
+            [
+              6145028,
+              1268925992
+            ],
+            [
+              6144808,
+              1268926556
+            ],
+            [
+              6144808,
+              2145585076
+            ],
+            [
+              6145028,
+              2139415416
+            ],
+            [
+              6144784,
+              1610612736
+            ],
+            [
+              6144768,
+              2157381632
+            ],
+            [
+              6144492,
+              2088115064
+            ]
+          ],
+          "cache_ops": 20,
+          "plugin_stack_bytes_excluding_VSH": 384,
+          "steps": 4771
+        },
+        {
+          "case": "fault:100",
+          "status": "0x6",
+          "error": "0x0",
+          "target_writes": [
+            [
+              6144492,
+              1268925496
+            ],
+            [
+              6144768,
+              1268925564
+            ],
+            [
+              6144784,
+              1268925892
+            ],
+            [
+              6145028,
+              1268925992
+            ],
+            [
+              6144808,
+              1268926556
+            ],
+            [
+              6144808,
+              2145585076
+            ],
+            [
+              6145028,
+              2139415416
+            ],
+            [
+              6144784,
+              1610612736
+            ],
+            [
+              6144768,
+              2157381632
+            ],
+            [
+              6144492,
+              2088115064
+            ]
+          ],
+          "cache_ops": 20,
+          "plugin_stack_bytes_excluding_VSH": 384,
+          "steps": 4774
+        },
+        {
+          "case": "ok",
+          "status": "0x6",
+          "error": "0x0",
+          "target_writes": [
+            [
+              6144492,
+              1268925496
+            ],
+            [
+              6144768,
+              1268925564
+            ],
+            [
+              6144784,
+              1268925892
+            ],
+            [
+              6145028,
+              1268925992
+            ],
+            [
+              6144808,
+              1268926556
+            ],
+            [
+              6144808,
+              2145585076
+            ],
+            [
+              6145028,
+              2139415416
+            ],
+            [
+              6144784,
+              1610612736
+            ],
+            [
+              6144768,
+              2157381632
+            ],
+            [
+              6144492,
+              2088115064
+            ]
+          ],
+          "cache_ops": 20,
+          "plugin_stack_bytes_excluding_VSH": 384,
+          "steps": 46780
+        },
+        {
+          "case": "capacity",
+          "status": "0x6",
+          "error": "0x0",
+          "target_writes": [
+            [
+              6144492,
+              1268925496
+            ],
+            [
+              6144768,
+              1268925564
+            ],
+            [
+              6144784,
+              1268925892
+            ],
+            [
+              6145028,
+              1268925992
+            ],
+            [
+              6144808,
+              1268926556
+            ],
+            [
+              6144808,
+              2145585076
+            ],
+            [
+              6145028,
+              2139415416
+            ],
+            [
+              6144784,
+              1610612736
+            ],
+            [
+              6144768,
+              2157381632
+            ],
+            [
+              6144492,
+              2088115064
+            ]
+          ],
+          "cache_ops": 20,
+          "plugin_stack_bytes_excluding_VSH": 384,
+          "steps": 4777
+        },
+        {
+          "case": "firmware",
+          "status": "0xe0",
+          "error": "0x1",
+          "target_writes": [],
+          "cache_ops": 0,
+          "plugin_stack_bytes_excluding_VSH": 256,
+          "steps": 26
+        },
+        {
+          "case": "cobra",
+          "status": "0xe0",
+          "error": "0x1",
+          "target_writes": [],
+          "cache_ops": 0,
+          "plugin_stack_bytes_excluding_VSH": 256,
+          "steps": 55
+        },
+        {
+          "case": "dex",
+          "status": "0xe0",
+          "error": "0x1",
+          "target_writes": [],
+          "cache_ops": 0,
+          "plugin_stack_bytes_excluding_VSH": 256,
+          "steps": 38
+        },
+        {
+          "case": "mem_fail",
+          "status": "0xe0",
+          "error": "0x4",
+          "target_writes": [],
+          "cache_ops": 0,
+          "plugin_stack_bytes_excluding_VSH": 384,
+          "steps": 94
+        },
+        {
+          "case": "readonly",
+          "status": "0xe0",
+          "error": "0x2",
+          "target_writes": [],
+          "cache_ops": 0,
+          "plugin_stack_bytes_excluding_VSH": 384,
+          "steps": 4198
+        },
+        {
+          "case": "noaccess",
+          "status": "0xe0",
+          "error": "0x2",
+          "target_writes": [],
+          "cache_ops": 0,
+          "plugin_stack_bytes_excluding_VSH": 384,
+          "steps": 4201
+        },
+        {
+          "case": "pagefail",
+          "status": "0xe0",
+          "error": "0x2",
+          "target_writes": [],
+          "cache_ops": 0,
+          "plugin_stack_bytes_excluding_VSH": 384,
+          "steps": 4193
+        },
+        {
+          "case": "range",
+          "status": "0xe0",
+          "error": "0x3",
+          "target_writes": [],
+          "cache_ops": 0,
+          "plugin_stack_bytes_excluding_VSH": 384,
+          "steps": 4218
+        },
+        {
+          "case": "stop",
+          "status": "0x6",
+          "error": "0x0",
+          "target_writes": [
+            [
+              6144492,
+              1268925496
+            ],
+            [
+              6144768,
+              1268925564
+            ],
+            [
+              6144784,
+              1268925892
+            ],
+            [
+              6145028,
+              1268925992
+            ],
+            [
+              6144808,
+              1268926556
+            ],
+            [
+              6144808,
+              2145585076
+            ],
+            [
+              6145028,
+              2139415416
+            ],
+            [
+              6144784,
+              1610612736
+            ],
+            [
+              6144768,
+              2157381632
+            ],
+            [
+              6144492,
+              2088115064
+            ]
+          ],
+          "cache_ops": 20,
+          "plugin_stack_bytes_excluding_VSH": 384,
+          "steps": 4850
+        },
+        {
+          "case": "sleep_fail",
+          "status": "0x6",
+          "error": "0x6",
+          "target_writes": [
+            [
+              6144492,
+              1268925496
+            ],
+            [
+              6144768,
+              1268925564
+            ],
+            [
+              6144784,
+              1268925892
+            ],
+            [
+              6145028,
+              1268925992
+            ],
+            [
+              6144808,
+              1268926556
+            ],
+            [
+              6144808,
+              2145585076
+            ],
+            [
+              6145028,
+              2139415416
+            ],
+            [
+              6144784,
+              1610612736
+            ],
+            [
+              6144768,
+              2157381632
+            ],
+            [
+              6144492,
+              2088115064
+            ]
+          ],
+          "cache_ops": 20,
+          "plugin_stack_bytes_excluding_VSH": 384,
+          "steps": 4763
+        },
+        {
+          "case": "foreign",
+          "status": "0x6",
+          "error": "0x7",
+          "target_writes": [
+            [
+              6144492,
+              1268925496
+            ],
+            [
+              6144768,
+              1268925564
+            ],
+            [
+              6144784,
+              1268925892
+            ],
+            [
+              6145028,
+              1268925992
+            ],
+            [
+              6144808,
+              1268926556
+            ],
+            [
+              6144808,
+              2145585076
+            ],
+            [
+              6145028,
+              2139415416
+            ],
+            [
+              6144768,
+              2157381632
+            ],
+            [
+              6144492,
+              2088115064
+            ]
+          ],
+          "cache_ops": 18,
+          "plugin_stack_bytes_excluding_VSH": 384,
+          "steps": 46769
+        },
+        {
+          "case": "freeze_busy",
+          "status": "0xe1",
+          "error": "0x8",
+          "target_writes": [
+            [
+              6144492,
+              1268925496
+            ],
+            [
+              6144768,
+              1268925564
+            ],
+            [
+              6144784,
+              1268925892
+            ],
+            [
+              6145028,
+              1268925992
+            ],
+            [
+              6144808,
+              1268926556
+            ],
+            [
+              6144808,
+              2145585076
+            ],
+            [
+              6145028,
+              2139415416
+            ],
+            [
+              6144784,
+              1610612736
+            ],
+            [
+              6144768,
+              2157381632
+            ],
+            [
+              6144492,
+              2088115064
+            ]
+          ],
+          "cache_ops": 20,
+          "plugin_stack_bytes_excluding_VSH": 384,
+          "steps": 49071
+        },
+        {
+          "case": "delta:-5242880",
+          "status": "0x6",
+          "error": "0x0",
+          "target_writes": [
+            [
+              6144492,
+              1269825536
+            ],
+            [
+              6144768,
+              1268925564
+            ],
+            [
+              6144784,
+              1268925892
+            ],
+            [
+              6145028,
+              1268925992
+            ],
+            [
+              6144808,
+              1268926556
+            ],
+            [
+              6144808,
+              2145585076
+            ],
+            [
+              6145028,
+              2139415416
+            ],
+            [
+              6144784,
+              1610612736
+            ],
+            [
+              6144768,
+              2157381632
+            ],
+            [
+              6144492,
+              2088115064
+            ]
+          ],
+          "cache_ops": 20,
+          "plugin_stack_bytes_excluding_VSH": 384,
+          "steps": 46780
+        },
+        {
+          "case": "delta:33554428",
+          "status": "0x6",
+          "error": "0x0",
+          "target_writes": [
+            [
+              6144492,
+              1241513980
+            ],
+            [
+              6144768,
+              1268925564
+            ],
+            [
+              6144784,
+              1268925892
+            ],
+            [
+              6145028,
+              1268925992
+            ],
+            [
+              6144808,
+              1268926556
+            ],
+            [
+              6144808,
+              2145585076
+            ],
+            [
+              6145028,
+              2139415416
+            ],
+            [
+              6144784,
+              1610612736
+            ],
+            [
+              6144768,
+              2157381632
+            ],
+            [
+              6144492,
+              2088115064
+            ]
+          ],
+          "cache_ops": 20,
+          "plugin_stack_bytes_excluding_VSH": 384,
+          "steps": 46780
+        },
+        {
+          "case": "delta:33554432",
+          "status": "0xe0",
+          "error": "0x3",
+          "target_writes": [],
+          "cache_ops": 0,
+          "plugin_stack_bytes_excluding_VSH": 384,
+          "steps": 4218
+        },
+        {
+          "case": "delta:2",
+          "status": "0xe0",
+          "error": "0x3",
+          "target_writes": [],
+          "cache_ops": 0,
+          "plugin_stack_bytes_excluding_VSH": 384,
+          "steps": 4210
+        },
+        {
+          "case": "anchor:0",
+          "status": "0xe0",
+          "error": "0x1",
+          "target_writes": [],
+          "cache_ops": 0,
+          "plugin_stack_bytes_excluding_VSH": 384,
+          "steps": 108
+        },
+        {
+          "case": "anchor:1",
+          "status": "0xe0",
+          "error": "0x1",
+          "target_writes": [],
+          "cache_ops": 0,
+          "plugin_stack_bytes_excluding_VSH": 384,
+          "steps": 273
+        },
+        {
+          "case": "anchor:2",
+          "status": "0xe0",
+          "error": "0x1",
+          "target_writes": [],
+          "cache_ops": 0,
+          "plugin_stack_bytes_excluding_VSH": 384,
+          "steps": 438
+        },
+        {
+          "case": "anchor:3",
+          "status": "0xe0",
+          "error": "0x1",
+          "target_writes": [],
+          "cache_ops": 0,
+          "plugin_stack_bytes_excluding_VSH": 384,
+          "steps": 603
+        },
+        {
+          "case": "anchor:4",
+          "status": "0xe0",
+          "error": "0x1",
+          "target_writes": [],
+          "cache_ops": 0,
+          "plugin_stack_bytes_excluding_VSH": 384,
+          "steps": 768
+        },
+        {
+          "case": "anchor:5",
+          "status": "0xe0",
+          "error": "0x1",
+          "target_writes": [],
+          "cache_ops": 0,
+          "plugin_stack_bytes_excluding_VSH": 384,
+          "steps": 933
+        },
+        {
+          "case": "anchor:6",
+          "status": "0xe0",
+          "error": "0x1",
+          "target_writes": [],
+          "cache_ops": 0,
+          "plugin_stack_bytes_excluding_VSH": 384,
+          "steps": 1098
+        },
+        {
+          "case": "anchor:7",
+          "status": "0xe0",
+          "error": "0x1",
+          "target_writes": [],
+          "cache_ops": 0,
+          "plugin_stack_bytes_excluding_VSH": 384,
+          "steps": 1263
+        },
+        {
+          "case": "anchor:8",
+          "status": "0xe0",
+          "error": "0x1",
+          "target_writes": [],
+          "cache_ops": 0,
+          "plugin_stack_bytes_excluding_VSH": 384,
+          "steps": 1428
+        },
+        {
+          "case": "anchor:9",
+          "status": "0xe0",
+          "error": "0x1",
+          "target_writes": [],
+          "cache_ops": 0,
+          "plugin_stack_bytes_excluding_VSH": 384,
+          "steps": 1593
+        },
+        {
+          "case": "anchor:10",
+          "status": "0xe0",
+          "error": "0x1",
+          "target_writes": [],
+          "cache_ops": 0,
+          "plugin_stack_bytes_excluding_VSH": 384,
+          "steps": 1758
+        },
+        {
+          "case": "anchor:11",
+          "status": "0xe0",
+          "error": "0x1",
+          "target_writes": [],
+          "cache_ops": 0,
+          "plugin_stack_bytes_excluding_VSH": 384,
+          "steps": 1923
+        },
+        {
+          "case": "anchor:12",
+          "status": "0xe0",
+          "error": "0x1",
+          "target_writes": [],
+          "cache_ops": 0,
+          "plugin_stack_bytes_excluding_VSH": 384,
+          "steps": 2088
+        },
+        {
+          "case": "anchor:13",
+          "status": "0xe0",
+          "error": "0x1",
+          "target_writes": [],
+          "cache_ops": 0,
+          "plugin_stack_bytes_excluding_VSH": 384,
+          "steps": 2253
+        },
+        {
+          "case": "anchor:14",
+          "status": "0xe0",
+          "error": "0x1",
+          "target_writes": [],
+          "cache_ops": 0,
+          "plugin_stack_bytes_excluding_VSH": 384,
+          "steps": 2418
+        },
+        {
+          "case": "anchor:15",
+          "status": "0xe0",
+          "error": "0x1",
+          "target_writes": [],
+          "cache_ops": 0,
+          "plugin_stack_bytes_excluding_VSH": 384,
+          "steps": 2583
+        },
+        {
+          "case": "anchor:16",
+          "status": "0xe0",
+          "error": "0x1",
+          "target_writes": [],
+          "cache_ops": 0,
+          "plugin_stack_bytes_excluding_VSH": 384,
+          "steps": 2748
+        },
+        {
+          "case": "anchor:17",
+          "status": "0xe0",
+          "error": "0x1",
+          "target_writes": [],
+          "cache_ops": 0,
+          "plugin_stack_bytes_excluding_VSH": 384,
+          "steps": 2913
+        },
+        {
+          "case": "anchor:18",
+          "status": "0xe0",
+          "error": "0x1",
+          "target_writes": [],
+          "cache_ops": 0,
+          "plugin_stack_bytes_excluding_VSH": 384,
+          "steps": 3078
+        },
+        {
+          "case": "anchor:19",
+          "status": "0xe0",
+          "error": "0x1",
+          "target_writes": [],
+          "cache_ops": 0,
+          "plugin_stack_bytes_excluding_VSH": 384,
+          "steps": 3243
+        },
+        {
+          "case": "anchor:20",
+          "status": "0xe0",
+          "error": "0x1",
+          "target_writes": [],
+          "cache_ops": 0,
+          "plugin_stack_bytes_excluding_VSH": 384,
+          "steps": 3408
+        },
+        {
+          "case": "anchor:21",
+          "status": "0xe0",
+          "error": "0x1",
+          "target_writes": [],
+          "cache_ops": 0,
+          "plugin_stack_bytes_excluding_VSH": 384,
+          "steps": 3573
+        },
+        {
+          "case": "anchor:22",
+          "status": "0xe0",
+          "error": "0x1",
+          "target_writes": [],
+          "cache_ops": 0,
+          "plugin_stack_bytes_excluding_VSH": 384,
+          "steps": 3738
+        },
+        {
+          "case": "anchor:23",
+          "status": "0xe0",
+          "error": "0x1",
+          "target_writes": [],
+          "cache_ops": 0,
+          "plugin_stack_bytes_excluding_VSH": 384,
+          "steps": 3903
+        },
+        {
+          "case": "anchor:24",
+          "status": "0xe0",
+          "error": "0x1",
+          "target_writes": [],
+          "cache_ops": 0,
+          "plugin_stack_bytes_excluding_VSH": 384,
+          "steps": 4068
+        },
+        {
+          "case": "cas:0",
+          "status": "0x6",
+          "error": "0x5",
+          "target_writes": [],
+          "cache_ops": 0,
+          "plugin_stack_bytes_excluding_VSH": 384,
+          "steps": 4566
+        },
+        {
+          "case": "cas:1",
+          "status": "0x6",
+          "error": "0x5",
+          "target_writes": [
+            [
+              6144492,
+              1268925496
+            ],
+            [
+              6144492,
+              2088115064
+            ]
+          ],
+          "cache_ops": 4,
+          "plugin_stack_bytes_excluding_VSH": 384,
+          "steps": 4622
+        },
+        {
+          "case": "cas:2",
+          "status": "0x6",
+          "error": "0x5",
+          "target_writes": [
+            [
+              6144492,
+              1268925496
+            ],
+            [
+              6144768,
+              1268925564
+            ],
+            [
+              6144768,
+              2157381632
+            ],
+            [
+              6144492,
+              2088115064
+            ]
+          ],
+          "cache_ops": 8,
+          "plugin_stack_bytes_excluding_VSH": 384,
+          "steps": 4678
+        },
+        {
+          "case": "cas:3",
+          "status": "0x6",
+          "error": "0x5",
+          "target_writes": [
+            [
+              6144492,
+              1268925496
+            ],
+            [
+              6144768,
+              1268925564
+            ],
+            [
+              6144784,
+              1268925892
+            ],
+            [
+              6144784,
+              1610612736
+            ],
+            [
+              6144768,
+              2157381632
+            ],
+            [
+              6144492,
+              2088115064
+            ]
+          ],
+          "cache_ops": 12,
+          "plugin_stack_bytes_excluding_VSH": 384,
+          "steps": 4734
+        },
+        {
+          "case": "cas:4",
+          "status": "0x6",
+          "error": "0x5",
+          "target_writes": [
+            [
+              6144492,
+              1268925496
+            ],
+            [
+              6144768,
+              1268925564
+            ],
+            [
+              6144784,
+              1268925892
+            ],
+            [
+              6145028,
+              1268925992
+            ],
+            [
+              6145028,
+              2139415416
+            ],
+            [
+              6144784,
+              1610612736
+            ],
+            [
+              6144768,
+              2157381632
+            ],
+            [
+              6144492,
+              2088115064
+            ]
+          ],
+          "cache_ops": 16,
+          "plugin_stack_bytes_excluding_VSH": 384,
+          "steps": 4790
+        },
+        {
+          "case": "stop_phase2_refusal",
+          "pass": true
+        },
+        {
+          "case": "start_ok",
+          "pass": true
+        },
+        {
+          "case": "start_failed",
+          "pass": true
+        }
+      ]
+    },
+    "lifetime": {
+      "result": "PASS bounded model",
+      "interleavings": 20,
+      "pinned_safe_in_model": true,
+      "hot_unload_negative_controls": [
+        [
+          "fetch",
+          "restore",
+          "stop",
+          "unload",
+          "enter",
+          "leave"
+        ]
+      ],
+      "assumptions": [
+        "single-word publication atomic",
+        "fetched old-or-new branch, no torn word",
+        "native stop phase2 refusal semantics as checked against local kernel",
+        "no forced unmap or reboot during execution"
+      ]
+    },
+    "decoder": {
+      "PASS": true,
+      "negative_controls": 14,
+      "nonzero_reply_not_masked_by_send_success": true,
+      "TX_start_not_synthetic_BEGIN": true
+    },
+    "analysis": {
+      "PASS": true,
+      "negative_controls": 13,
+      "positive": "synthetic built-instruction replay, not native execution"
+    },
+    "samsara": {
+      "passed": 1519,
+      "failed": 0,
+      "new_template": "exact Samsara second mode, byte114=0x34",
+      "accepted_480_byte114_values": [
+        4,
+        52
+      ],
+      "signaling_preserved": true,
+      "new_AV_store_sites": 0,
+      "native_execution": false
+    }
+  },
+  "native_evidence": "Samsara temporary playback passed; subsequent HDD autoload, restart guard/hooks and user playback confirmation passed. Earlier build tested Zodiac, Perfect Days and MGS2. Not all-disc certification.",
+  "privacy": "Allowlisted source and binary only; no original Git history, captures, console addresses, personal paths, credentials, firmware or SDK included. This does not promise anonymity from hosting providers.",
+  "provenance": "See PROVENANCE.md; no blanket third-party license grant."
+}

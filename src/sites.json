@@ -1,0 +1,42 @@
+{
+  "hardware_ready": false,
+  "installation_implemented": true,
+  "native_validated": false,
+  "sites": [
+    {
+      "name": "begin",
+      "va": "0x5dc1ec",
+      "original": "7c761b78",
+      "replay": "mr 22,3",
+      "symbol": "capture_begin"
+    },
+    {
+      "name": "tx",
+      "va": "0x5dc300",
+      "original": "80970800",
+      "replay": "lwz 4,2048(23)",
+      "symbol": "capture_tx"
+    },
+    {
+      "name": "send",
+      "va": "0x5dc310",
+      "original": "60000000",
+      "replay": "nop",
+      "symbol": "capture_send"
+    },
+    {
+      "name": "reply",
+      "va": "0x5dc404",
+      "original": "7f84e378",
+      "replay": "mr 4,28",
+      "symbol": "capture_reply"
+    },
+    {
+      "name": "end",
+      "va": "0x5dc328",
+      "original": "7fe307b4",
+      "replay": "extsw 3,31",
+      "symbol": "capture_end"
+    }
+  ]
+}
